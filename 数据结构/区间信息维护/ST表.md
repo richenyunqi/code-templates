@@ -21,10 +21,10 @@ ST 表基于 `倍增` 思想，可以做到 $\Theta (nlogn)$ 预处理， $O(1)$
 class ST {
   public:
     vector<vector<gg>> stMax, stMin;
-    //求最大值，统一赋值INT_MIN
+    //求最大值，统一赋值-INF
     ST(gg len) :
-        n(len), stMax(len + 5, vector<gg>(len2 + 5, INT_MIN)),
-        stMin(len + 5, vector<gg>(len2 + 5, INT_MAX)) {
+        n(len), stMax(len + 5, vector<gg>(len2 + 5, -INF)),
+        stMin(len + 5, vector<gg>(len2 + 5, INF)) {
         STinit();
     }
     //求[l,r]区间内的最大值
