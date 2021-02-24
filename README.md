@@ -10,10 +10,10 @@
 
 1. `gg`：表示`long long`类型。本代码仓库中所有整型数据均使用`long long`类型存储，之所以不用 `int` 是因为 `int` 很容易造成数据溢出错误。为了编码方便，可以为`long long`定义一个类型别名`gg`，代码可以是`using gg = long long`。本代码仓库中所有代码均默认导入了这行定义类型别名的代码，即**本代码仓库中所有的`gg`均表示`long long`类型**。
 2. `MAX`：表示问题数据规模的上限。本仓库的代码经常会开一个非常大的全局数组，长度即为`MAX`。在使用这样的代码时，你需要在定义这个数组之前定义并初始化`MAX`变量，代码可以是`constexpr gg MAX = 1e6 + 5`。
-3. `INF`：表示一个正无穷大的正整数。在使用含有`INF`的代码时，你需要在定义这个数组之前定义并初始化`MAX`变量，代码可以是`constexpr gg INF = 2e18`。相应地，负无穷小可以用`-INF`表示。
+3. `INF`：表示一个正无穷大的正整数。在使用含有`INF`的代码时，你需要在定义这个数组之前定义并初始化`INF`变量，代码可以是`constexpr gg INF = 2e18`。相应地，负无穷小可以用`-INF`表示。
 4. `ni`、`mi`等：表示输入序列所包含的元素个数。例如，`ni`变量代表输入一维数据的总数，`ni`、`mi`分别表示输入二维数据两个维度上的总数，等等。后缀`i`是`input`的缩写，表明该变量是由输入指定的，以此与普通的`n`、`m`等变量相区分。
 
-因此，运行本仓库代码前的默认依赖变量定义如下：
+因此，运行本仓库代码前的默认依赖定义如下：
 
 ```cpp
 #include <bits/stdc++.h>
@@ -30,7 +30,7 @@ gg ti, ni, mi, ki, di, pi, xi, yi;
 
 为了更好地浏览本仓库，建议使用 `chrome` 或新版 `Edge` 浏览器并安装以下插件（这里提供的插件链接需要科学上网才能打开）：
 
-1. [Octotree](https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc):对打开的 Github 代码仓库，像 IDE 一样提供项目目录自动生成一个仓库目录树侧边栏，通过这个插件你可以很方便地打开这个仓库内的任何一个文件。
+1. [Octotree](https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc)：对打开的 Github 代码仓库，像 IDE 一样提供项目目录自动生成一个仓库目录树侧边栏，通过这个插件你可以很方便地打开这个仓库内的任何一个文件。
 2. [MathJax Plugin for Github](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima)：对`github`上`markdown`文本的`latex`语法进行渲染。
 3. [GayHub](https://chrome.google.com/webstore/detail/gayhub/mdcffelghikdiafnfodjlgllenhlnejl)：为 Github 上的 markdown 文本自动生成目录。该插件似乎还拥有类似于 Octotree 生成目录树的功能，但是目前该功能已失效，而作者至今尚未修复。
 
