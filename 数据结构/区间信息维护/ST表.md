@@ -2,7 +2,7 @@
 
 ## 概述
 
-ST 表全称为`Sparse-Table`，是用于解决`可重复贡献问题`的数据结构。`可重复贡献问题`是指对于运算$opt$，满足$x\ opt\ x=x$，则对应的区间询问就是一个可重复贡献问题。例如，最大值有$max(x,x)=x$，gcd 有$gcd(x,x)=x$，所以 RMQ（RMQ 是英文 `Range Maximum/Minimum Query`的缩写，表示区间最大/最小值。） 和区间 GCD 就是一个`可重复贡献问题`。像区间和就不具有这个性质，如果求区间和的时候采用的预处理区间重叠了，则会导致重叠部分被计算两次，这是我们所不愿意看到的。另外，$opt$还必须满足结合律才能使用 ST 表求解。
+ST 表全称为`Sparse-Table`，是用于解决`可重复贡献问题`的数据结构。`可重复贡献问题`是指对于运算$opt$，满足$x\ opt\ x=x$，则对应的区间询问就是一个可重复贡献问题。例如，最大值有$max(x,x)=x$，gcd 有$gcd(x,x)=x$，所以 RMQ（RMQ 是英文 `Range Maximum/Minimum Query`的缩写，表示区间最大/最小值。） 和区间 GCD 就是一个`可重复贡献问题`。像区间和就不具有这个性质，如果求区间和的时候采用的预处理区间重叠了，则会导致重叠部分被计算两次。另外，$opt$还必须满足结合律才能使用 ST 表求解。
 
 ## 模板题
 
@@ -18,42 +18,30 @@ ST 表基于 `倍增` 思想，可以做到 $\Theta (nlogn)$ 预处理， $O(1)$
 ## C++代码
 
 ```cpp
+template <typename T, gg n2 = 20, typename Union_Operation = function<T(T, T)>>
 class ST {
   public:
-    vector<vector<gg>> stMax, stMin;
-    //求最大值，统一赋值-INF
-    ST(gg len) :
-        n(len), stMax(len + 5, vector<gg>(len2 + 5, -INF)),
-        stMin(len + 5, vector<gg>(len2 + 5, INF)) {
-        STinit();
+    ST(gg len, T* A, const T& default_value,
+        const Union_Operation& _union_op = [](const T& a, const T& b) { return max(a, b); }) :
+        n(len), st(len + 5, vector<T>(n2, default_value)), union_op(_union_op) {
+        STinit(A);
     }
-    //求[l,r]区间内的最大值
-    gg STqueryMax(gg l, gg r) {
+    //求[l,r]区间执行union_op后的值
+    gg STquery(gg l, gg r) {
         gg s = log2(r - l + 1);
-        return max(stMax[l][s], stMax[r - (1 << s) + 1][s]);
+        return union_op(st[l][s], st[r - (1 << s) + 1][s]);
     }
-    //求[l,r]区间内的最小值
-    gg STqueryMin(gg l, gg r) {
-        gg s = log2(r - l + 1);
-        return min(stMin[l][s], stMin[r - (1 << s) + 1][s]);
-    }
-
   private:
-    //第二维的长度设定为20，表示查询序列最多不超过2^20个数字，可按需求更改
-    static constexpr gg len2 = 20;
     gg n;  //记录输入序列的长度
-    void STinit() {
-        //将输入的所有数字a[i]读取到了st[i][0]的位置
+    vector<vector<T>> st;
+    Union_Operation union_op;
+    void STinit(T* A) {
         for (gg i = 1; i <= n; ++i) {
-            cin >> stMax[i][0];
-            stMin[i][0] = stMax[i][0];
+            st[i][0] = A[i];
         }
-        for (gg j = 1; j <= len2; ++j) {
+        for (gg j = 1; j <= n2; ++j) {
             for (gg i = 1; i + (1 << j) - 1 <= n; ++i) {
-                stMax[i][j] =
-                    max(stMax[i][j - 1], stMax[i + (1 << (j - 1))][j - 1]);
-                stMin[i][j] =
-                    min(stMin[i][j - 1], stMin[i + (1 << (j - 1))][j - 1]);
+                st[i][j] = union_op(st[i][j - 1], st[i + (1 << (j - 1))][j - 1]);
             }
         }
     }
