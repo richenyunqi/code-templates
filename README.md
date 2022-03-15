@@ -39,4 +39,4 @@ gg ti, ni, mi, ki, di, pi, xi, yi;
 
 ## 致谢
 
-感谢[Lord Hero](https://github.com/Lord-Hero)对仓库代码中的bug的提醒。
+感谢[CitySkylines](https://github.com/CitySkylines)对仓库代码中的bug的提醒。
