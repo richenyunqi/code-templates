@@ -30,10 +30,13 @@ gg ti, ni, mi, ki, di, pi, xi, yi;
 
 为了更好地浏览本仓库，建议使用 `chrome` 或新版 `Edge` 浏览器并安装以下插件（这里提供的插件链接需要科学上网才能打开）：
 
-1. [Octotree](https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc)：对打开的 Github 代码仓库，像 IDE 一样提供项目目录自动生成一个仓库目录树侧边栏，通过这个插件你可以很方便地打开这个仓库内的任何一个文件。
-2. [MathJax Plugin for Github](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima)：对`github`上`markdown`文本的`latex`语法进行渲染。
-3. [GayHub](https://chrome.google.com/webstore/detail/gayhub/mdcffelghikdiafnfodjlgllenhlnejl)：为 Github 上的 markdown 文本自动生成目录。该插件似乎还拥有类似于 Octotree 生成目录树的功能，但是目前该功能已失效，而作者至今尚未修复。
+1. [Gitako](https://chrome.google.com/webstore/detail/gitako-github-file-tree/giljefjcheohhamkjphiebfjnlphnokk)：对打开的 Github 代码仓库，像 IDE 一样提供项目目录自动生成一个仓库目录树侧边栏，通过这个插件你可以很方便地打开这个仓库内的任何一个文件。
+2. [MathJax 3 Plugin for Github](https://chrome.google.com/webstore/detail/mathjax-3-plugin-for-gith/peoghobgdhejhcmgoppjpjcidngdfkod)：对`github`上`markdown`文本的`latex`语法进行渲染。
 
 ## 相关链接
 
 有关知识点的讲解和汇总可参考[OI wiki](https://oi-wiki.org/)，有关练习题目可参考[一个动态更新的洛谷综合题单](https://studyingfather.com/archives/841)。本仓库也参考了这两个网站的内容，在此对 OI wiki 和综合题单的撰写者和维护者表示诚挚的谢意。
+
+## 致谢
+
+感谢[CitySkylines](https://github.com/CitySkylines)对仓库代码中的bug的提醒。
