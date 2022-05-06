@@ -18,12 +18,11 @@ ST 表基于 `倍增` 思想，可以做到 $\Theta (nlogn)$ 预处理， $O(1)$
 ## C++代码
 
 ```cpp
-template <typename T, gg n2 = 20, typename Union_Operation = function<T(T, T)>>
+template <typename T, typename Union_Operation, gg n2 = 20>
 class ST {
   public:
-    ST(gg len, T* A, const T& default_value,
-        const Union_Operation& _union_op = [](const T& a, const T& b) { return max(a, b); }) :
-        n(len), st(len + 5, vector<T>(n2, default_value)), union_op(_union_op) {
+    ST(gg len, T* A, const T& default_value) :
+        n(len), st(len + 5, vector<T>(n2, default_value)), union_op(Union_Operation()) {
         STinit(A);
     }
     //求[l,r]区间执行union_op后的值
@@ -31,6 +30,7 @@ class ST {
         gg s = log2(r - l + 1);
         return union_op(st[l][s], st[r - (1 << s) + 1][s]);
     }
+
   private:
     gg n;  //记录输入序列的长度
     vector<vector<T>> st;
