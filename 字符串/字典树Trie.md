@@ -10,7 +10,7 @@ class Trie {
     void insert(const string& word) {
         auto i = root;
         for (char c : word) {
-            if (not i->children[c]) {
+            if (not i->children.count(c)) {
                 i->children[c] = new TrieNode();
             }
             i = i->children[c];
@@ -21,33 +21,20 @@ class Trie {
     bool search(const string& word) {
         auto i = root;
         for (char c : word) {
-            if (not i->children[c]) {
+            if (not i->children.count(c)) {
                 return false;
             }
             i = i->children[c];
         }
         return i->count > 0;  //如果是查找前缀把这条语句换成return true;就可以了
     }
-    //删除一个单词
-    void remove(const string& word) { root = dfs(root, word, 0); }
 
   private:
     struct TrieNode {
         gg count = 0;  //该结点代表的单词个数,count>0表示这是一个单词结点
-        TrieNode* children[128]{};
+        map<char, TrieNode*> children;
     };
     TrieNode* root;
-    TrieNode* dfs(TrieNode* r, const string& word, gg p) {
-        if (p >= word.size()) {
-            return nullptr;
-        }
-        r->children[word[p]] = dfs(r->children[word[p]], word, p + 1);
-        if (all_of(begin(r->children), end(r->children), [](TrieNode* t) { return not t; })) {
-            return nullptr;
-        } else {
-            return r;
-        }
-    }
 };
 ```
 
@@ -73,7 +60,7 @@ class Trie {
         const bitset<bits>& bin(n);
         root = dfs(root, bin, bits - 1);
     }
-    //与bin异或的最大值
+    //与 n 异或的最大值
     gg search(gg n) {
         const bitset<bits>& bin(n);
         auto i = root;

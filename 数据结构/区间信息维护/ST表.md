@@ -18,7 +18,12 @@ ST 表基于 `倍增` 思想，可以做到 $\Theta (nlogn)$ 预处理， $O(1)$
 ## C++代码
 
 ```cpp
-template <typename T, typename Union_Operation, gg n2 = 20>
+template <typename T>
+struct Union_Op {
+    //将下面的函数替换成你需要的逻辑（这里假设取最大值），默认将这个类传递给ST类作Union_Operation类型参数
+    T operator()(const T& a, const T& b) const { return max(a, b); }
+};
+template <typename T, typename Union_Operation = Union_Op<T>, gg n2 = 20>
 class ST {
   public:
     ST(gg len, T* A, const T& default_value) :
