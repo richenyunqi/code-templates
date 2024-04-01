@@ -28,7 +28,7 @@ gg ti, ni, mi, ki, di, pi, xi, yi;
 
 ## 相关链接
 
-有关知识点的讲解和汇总可参考[OI wiki](https://oi-wiki.org/)，有关练习题目可参考[一个动态更新的洛谷综合题单](https://studyingfather.com/archives/841)。本仓库也参考了这两个网站的内容，在此对 OI wiki 和综合题单的撰写者和维护者表示诚挚的谢意。
+有关知识点的讲解和汇总可参考[OI wiki](https://oi-wiki.org/)，有关练习题目可参考[一个动态更新的洛谷综合题单](https://studyingfather.com/archives/841)。本仓库主要参考了这两个网站的内容，在此对 OI wiki 和综合题单的撰写者和维护者表示诚挚的谢意。
 
 ## 致谢
 
